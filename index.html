@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        #carrinho {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .produto {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .produto img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .produto h2 {
+            font-size: 1.2rem;
+        }
+        .produto p {
+            font-size: 1rem;
+            color: green;
+            margin: 0.5rem 0;
+        }
+        .produto button {
+            background-color: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .produto button:hover {
+            background-color: #218838;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Minha Loja Online</h1>
+        <div id="carrinho">Carrinho (0)</div>
+    </header>
+
+    <main>
+        <div class="produto">
+            <img src="https://via.placeholder.com/200" alt="Produto 1">
+            <h2>Produto 1</h2>
+            <p>R$ 49,90</p>
+            <button onclick="adicionarAoCarrinho('Produto 1', 49.90)">Comprar</button>
+        </div>
+
+        <div class="produto">
+            <img src="https://via.placeholder.com/200" alt="Produto 2">
+            <h2>Produto 2</h2>
+            <p>R$ 89,90</p>
+            <button onclick="adicionarAoCarrinho('Produto 2', 89.90)">Comprar</button>
+        </div>
+
+        <div class="produto">
+            <img src="https://via.placeholder.com/200" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <p>R$ 29,90</p>
+            <button onclick="adicionarAoCarrinho('Produto 3', 29.90)">Comprar</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Minha Loja Online. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let carrinho = [];
+
+        function adicionarAoCarrinho(nome, preco) {
+            carrinho.push({ nome, preco });
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const carrinhoEl = document.getElementById('carrinho');
+            carrinhoEl.textContent = `Carrinho (${carrinho.length})`;
+        }
+    </script>
+</body>
+</html>
