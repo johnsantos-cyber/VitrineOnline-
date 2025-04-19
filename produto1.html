@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto 1</title>
+    <style>
+        /* Estilos conforme a descrição anterior */
+    </style>
+</head>
+<body>
+
+<div class="produto-detalhado">
+    <img src="https://via.placeholder.com/600" alt="Produto 1">
+    <h2>Produto 1</h2>
+    <p><strong>Descrição:</strong> Este é um produto de alta qualidade, ideal para quem busca praticidade e durabilidade.</p>
+    <p><strong>Preço:</strong> R$ 49,90</p>
+    <button onclick="adicionarAoCarrinho('Produto 1', 49.90)">Adicionar ao Carrinho</button>
+</div>
+
+</body>
+</html>
+<button onclick="window.location.href='produto1.html'">Ver Detalhes</button>
+<div id="carrinho-container">
+    <h2>Carrinho de Compras</h2>
+    <div id="produtos-carrinho"></div> <!-- Aqui ficam os produtos -->
+    <div id="total-carrinho">Total: R$ 0,00</div> <!-- Total de compras -->
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+</div>
+<script>
+    let carrinho = [];
+    
+    function adicionarAoCarrinho(nome, preco) {
+        carrinho.push({ nome, preco });
+        atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+        const carrinhoEl = document.getElementById('produtos-carrinho');
+        carrinhoEl.innerHTML = '';
+        let total = 0;
+        carrinho.forEach(item => {
+            carrinhoEl.innerHTML += `<div>${item.nome} - R$ ${item.preco.toFixed(2)}</div>`;
+            total += item.preco;
+        });
+
+        const totalEl = document.getElementById('total-carrinho');
+        totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function finalizarCompra() {
+        alert('Compra finalizada! Obrigado pela sua compra.');
+        carrinho = [];
+        atualizarCarrinho();
+    }
+</script>
+<form id="form-checkout">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="endereco">Endereço:</label>
+    <textarea id="endereco" name="endereco" required></textarea>
+
+    <button type="submit">Finalizar Compra</button>
+</form>
+<input type="text" id="pesquisa" placeholder="Pesquisar produtos..." onkeyup="filtrarProdutos()">
+<select id="filtro-preco" onchange="filtrarProdutos()">
+    <option value="">Filtrar por preço</option>
+    <option value="baixo">Menor preço</option>
+    <option value="alto">Maior preço</option>
+</select>
+
+<script>
+    function filtrarProdutos() {
+        const pesquisa = document.getElementById('pesquisa').value.toLowerCase();
+        const filtroPreco = document.getElementById('filtro-preco').value;
+        
+        // Filtrar os produtos de acordo com a pesquisa e o filtro de preço
+        // Adapte para seus produtos específicos no código
+    }
+</script>
+.produto button {
+    transition: background-color 0.3s ease;
+}
+.produto button:hover {
+    background-color: #218838;
+}
